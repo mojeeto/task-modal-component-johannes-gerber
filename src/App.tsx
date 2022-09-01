@@ -5,7 +5,7 @@ function App() {
 
   return (
     <main className="flex items-center w-[100vw] h-[100vh] justify-center bg-[rgb(67,82,225)]">
-      <TodoModal path={path} />
+      <TodoModal path={path} title="Sidebar Design Explorations" />
     </main>
   );
 }
