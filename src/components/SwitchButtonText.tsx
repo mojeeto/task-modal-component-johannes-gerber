@@ -2,9 +2,11 @@ import React, { useState, useRef } from 'react';
 
 interface SwitchButtonTextProps {
   buttonsTitle: string[];
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-const SwitchButtonText: React.FC<SwitchButtonTextProps> = ({ buttonsTitle }) => {
+const SwitchButtonText: React.FC<SwitchButtonTextProps> = ({ buttonsTitle, className, style }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const boxDivRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +22,7 @@ const SwitchButtonText: React.FC<SwitchButtonTextProps> = ({ buttonsTitle }) => 
   }
 
   return (
-    <div className="relative inline-flex gap-2">
+    <div className={`relative inline-flex gap-2 ${className}`} style={style}>
       <div className="bg-slate-100 text-lg p-1 rounded-lg relative">
         {buttonsTitle.map((title, index) => (
           <button key={index} onClick={(e) => {

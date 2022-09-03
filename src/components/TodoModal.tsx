@@ -22,9 +22,9 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
           <ModalOptions />
         </div>
         <div className="flex flex-col gap-5">
-          <h2 className="text-3xl font-semibold text-stone-700">{title}</h2>
-          <SwitchButtonText buttonsTitle={["Describtion", "Checklist"]} />
-          <div className="flex justify-between items-center">
+          <h2 className="text-3xl font-semibold text-stone-700 animate-fadeUp" style={{ animationDelay: "0.7s" }}>{title}</h2>
+          <SwitchButtonText buttonsTitle={["Describtion", "Checklist"]} className="animate-fadeUp" style={{ animationDelay: "0.8s" }} />
+          <div className="flex justify-between items-center animate-fadeUp" style={{ animationDelay: "0.9s" }}>
             <div className="flex items-center gap-2">
               <CircleProgress />
               <div className="px-2 py-0.5 rounded-md bg-blue-600 text-white text-md">
@@ -40,11 +40,11 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
         </div>
         <div className="flex flex-col">
           <div className="flex items-center gap-3">
-            <span className="text-slate-400">Planning</span>
-            <div className="w-[100%] h-[1px] bg-slate-200"></div>
+            <span className="text-slate-400 animate-fadeUp">Planning</span>
+            <div className="animate-widthToRight h-[1px] bg-slate-200" style={{ animationDelay: "0.6s" }}></div>
           </div>
           <div className="flex gap-2">
-            <input type="checkbox" checked={true} />
+            <input type="checkbox" defaultChecked={true} />
             <span className="text-slate-400 line-through">Trend and Competitor Analysis</span>
           </div>
         </div>
