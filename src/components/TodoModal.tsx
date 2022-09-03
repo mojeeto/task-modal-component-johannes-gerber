@@ -4,6 +4,7 @@ import CircleProgress from "./CircleProgress";
 import ModalOptions from "./ModalOptions";
 import SwitchButtonText from "./SwitchButtonText";
 import { BiPlus } from "react-icons/bi";
+import CheckBoxText from "./CheckBoxText";
 
 interface TodoModalProps {
   path?: Array<string>;
@@ -38,14 +39,15 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
             <span className="text-slate-400 animate-fadeUp">Planning</span>
             <div className="animate-widthToRight h-[1px] bg-slate-200" style={{ animationDelay: "0.6s" }}></div>
           </div>
-          <div className="flex gap-2">
-            <input type="checkbox" defaultChecked={true} />
-            <span className="text-slate-400 line-through">Trend and Competitor Analysis</span>
+          <div className="flex flex-col gap-3">
+            <CheckBoxText title="Trend and Competiter Analysis" isChecked={true} />
+            <CheckBoxText title="Best Practices/State of the Art Research" isChecked={true} />
+            <CheckBoxText title="Create Figma File" isChecked={false} />
           </div>
         </div>
       </div>
