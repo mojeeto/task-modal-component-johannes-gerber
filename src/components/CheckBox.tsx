@@ -12,7 +12,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
 }) => {
   const notchecked = "border-slate-300";
   const checked = "border-blue-600 bg-blue-600"
-  return <div className={`border-2 flex items-center justify-center rounded-md ${isChecked ? checked : notchecked}`}>
+  return <div className={`border-2 flex items-center justify-center rounded-md cursor-pointer ${isChecked ? checked : notchecked}`}>
     <FiCheck className="text-white" />
   </div >
 }
