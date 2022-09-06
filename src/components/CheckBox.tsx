@@ -4,16 +4,18 @@ import { FiCheck } from 'react-icons/fi';
 
 interface CheckBoxProps {
   isChecked: boolean;
+  className?: string;
 }
 
 
 const CheckBox: React.FC<CheckBoxProps> = ({
-  isChecked
+  isChecked,
+  className
 }) => {
-  const notchecked = "border-slate-300";
-  const checked = "border-blue-600 bg-blue-600"
-  return <div className={`border-2 flex items-center justify-center rounded-md cursor-pointer ${isChecked ? checked : notchecked}`}>
-    <FiCheck className="text-white" />
+  const notchecked = "border-slate-300 text-transparent";
+  const checked = "border-blue-600 bg-blue-600 text-white"
+  return <div className={`border-2 flex items-center justify-center rounded-md cursor-pointer ${isChecked ? checked : notchecked} ${className}`}>
+    <FiCheck />
   </div >
 }
 

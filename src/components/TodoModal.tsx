@@ -13,16 +13,16 @@ interface TodoModalProps {
 
 const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
   return (
-    <div className="bg-white py-5 pr-5 pl-10 rounded-xl w-[600px]">
+    <div className="bg-white p-1 py-5 rounded-xl w-[600px]">
       {/* main modal */}
       <div className="flex flex-col gap-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center pl-9">
           {/* breadcrumb */}
           {path !== undefined && <Breadcrumb path={path} />}
           {/* options */}
           <ModalOptions />
         </div>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 pl-9">
           <h2
             className="text-3xl font-semibold text-stone-700 animate-fadeUp"
             style={{ animationDelay: "0.7s" }}
@@ -52,14 +52,14 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 pl-9">
             <span className="text-slate-400 animate-fadeUp">Planning</span>
             <div
               className="animate-widthToRight h-[1px] bg-slate-200"
               style={{ animationDelay: "0.6s" }}
             ></div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col pl-1">
             <CheckBoxText
               title="Trend and Competiter Analysis"
               isChecked={true}
@@ -76,14 +76,14 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
         </div>
       </div>
       <div className="flex flex-col gap-2 my-5">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 pl-9">
           <span className="text-slate-400 animate-fadeUp">Design</span>
           <div
             className="animate-widthToRight h-[1px] bg-slate-200"
             style={{ animationDelay: "0.6s" }}
           ></div>
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col">
           <CheckBoxText
             title="Wireframes LF"
             isChecked={false}
