@@ -15,18 +15,40 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({
   const [showDots, setShowDots] = useState<boolean>(false);
   const [value, setValue] = useState<string>(title);
   const [editActived, setEditActived] = useState<boolean>(false);
+
+  const onMouseOverCheckBoxText = () => {
+    setShowDots(true);
+  };
+
+  const onMouseLeaveCheckBoxText = () => {
+    if (!editActived) {
+      setShowDots(false);
+    }
+  };
+
+  const onChangeInputText = (e: string) => {
+    setValue(e);
+  };
+
+  const onBlurInputText = () => {
+    setEditActived(false);
+    setShowDots(false);
+  };
+
+  const onFocusinputtext: React.FocusEventHandler<HTMLInputElement> = (_) => {
+    setEditActived(true);
+  };
+
+  const onClickSpan = () => {
+    setEditActived(true);
+  };
+
   return (
     <div
       className="flex items-center animate-fadeUp"
       style={{ animationDelay: "0.8s" }}
-      onMouseOver={() => {
-        setShowDots(true);
-      }}
-      onMouseLeave={() => {
-        if (!editActived) {
-          setShowDots(false);
-        }
-      }}
+      onMouseOver={onMouseOverCheckBoxText}
+      onMouseLeave={onMouseLeaveCheckBoxText}
     >
       <div className="max-w-[20px] w-[20px]">
         {showDots && (
@@ -46,30 +68,18 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({
         >
           {editActived ? (
             <InputText
+              baseTitle={title}
               title={value}
-              onChange={(e) => {
-                const target = e.currentTarget;
-                if (target) {
-                  const newValue = target.value;
-                  setValue(newValue);
-                }
-              }}
-              onBlur={(_) => {
-                setEditActived(false);
-                setShowDots(false);
-              }}
-              onFocus={(_) => {
-                setEditActived(true);
-              }}
+              onChange={onChangeInputText}
+              onBlur={onBlurInputText}
+              onFocus={onFocusinputtext}
             />
           ) : (
             <span
               className={isChecked ? "text-slate-400" : "text-slate-700"}
-              onClick={() => {
-                setEditActived(true);
-              }}
+              onClick={onClickSpan}
             >
-              {title}
+              {value}
             </span>
           )}
           {isChecked && editActived !== isChecked && (
@@ -77,7 +87,7 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({
               className="absolute animate-widthToRight left-0 top-[50%] translate-y-[-50%] h-[1px] w-[100%] bg-slate-300"
               style={{ animationDuration: "0.1s" }}
             ></div>
-          )}{" "}
+          )}
         </div>
       </div>
     </div>

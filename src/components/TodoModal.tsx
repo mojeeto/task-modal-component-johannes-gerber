@@ -68,10 +68,7 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
               title="Best Practices/State of the Art Research"
               isChecked={true}
             />
-            <CheckBoxText
-              title="Create Figma File"
-              isChecked={false}
-            />
+            <CheckBoxText title="Create Figma File" isChecked={false} />
           </div>
         </div>
       </div>
@@ -84,26 +81,11 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
           ></div>
         </div>
         <div className="flex flex-col">
-          <CheckBoxText
-            title="Wireframes LF"
-            isChecked={false}
-          />
-          <CheckBoxText
-            title="Vistual Styles"
-            isChecked={false}
-          />
-          <CheckBoxText
-            title="Iconography"
-            isChecked={false}
-          />
-          <CheckBoxText
-            title="HF Interactive Prototype"
-            isChecked={false}
-          />
-          <CheckBoxText
-            title="Prepare Feedback Session"
-            isChecked={false}
-          />
+          <CheckBoxText title="Wireframes LF" isChecked={false} />
+          <CheckBoxText title="Vistual Styles" isChecked={false} />
+          <CheckBoxText title="Iconography" isChecked={false} />
+          <CheckBoxText title="HF Interactive Prototype" isChecked={false} />
+          <CheckBoxText title="Prepare Feedback Session" isChecked={false} />
         </div>
       </div>
     </div>
