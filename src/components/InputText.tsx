@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface InputTextProps {
-  baseTitle: string;
   title: string;
   onChange: (e: string) => void;
   onBlur: () => void;
@@ -9,12 +8,12 @@ interface InputTextProps {
 }
 
 const InputText: React.FC<InputTextProps> = ({
-  baseTitle,
   title,
   onChange,
   onBlur,
   onFocus,
 }) => {
+  const [value, setValue] = useState<string>(title);
   const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.currentTarget;
     if (target) {
@@ -22,9 +21,7 @@ const InputText: React.FC<InputTextProps> = ({
       if (target.hasAttribute(key)) {
         const type = target.getAttribute(key);
         if (type === "save") {
-          onChange(title);
-        } else if (type === "ignore") {
-          onChange(baseTitle);
+          onChange(value);
         }
       }
     }
@@ -34,7 +31,7 @@ const InputText: React.FC<InputTextProps> = ({
   const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
     if (target) {
-      onChange(target.value);
+      setValue(target.value);
     }
   };
 
@@ -42,7 +39,7 @@ const InputText: React.FC<InputTextProps> = ({
     <div className="flex gap-2">
       <input
         type="text"
-        value={title}
+        value={value}
         onChange={onChangeHandler}
         className={`disabled:bg-transparent w-[100%] px-2 py-1 border-none outline-blue-400`}
         onFocus={onFocus}

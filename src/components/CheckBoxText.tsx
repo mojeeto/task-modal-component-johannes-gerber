@@ -4,16 +4,19 @@ import { TbDotsVertical } from "react-icons/tb";
 import InputText from "./InputText";
 
 interface CheckBoxTextProps {
+  id?: number;
   title?: string;
   isChecked?: boolean;
+  update?: (id: number, title: string, isChcked: boolean) => void;
 }
 
 const CheckBoxText: React.FC<CheckBoxTextProps> = ({
+  id = 0,
   title = "",
   isChecked = false,
+  update = null,
 }) => {
   const [showDots, setShowDots] = useState<boolean>(false);
-  const [value, setValue] = useState<string>(title);
   const [editActived, setEditActived] = useState<boolean>(false);
 
   const onMouseOverCheckBoxText = () => {
@@ -26,8 +29,10 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({
     }
   };
 
-  const onChangeInputText = (e: string) => {
-    setValue(e);
+  const onChangeInputText = (newValidTitle: string) => {
+    if (update) {
+      update(id, newValidTitle, isChecked);
+    }
   };
 
   const onBlurInputText = () => {
@@ -61,15 +66,17 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({
         )}
       </div>
       <div className="flex items-center gap-2 select-none p-2 hover:rounded-md hover:bg-gray-100 flex-1">
-        <CheckBox isChecked={isChecked} className="z-10" />
+        <CheckBox isChecked={isChecked} className="z-10" onClick={() => {
+          if (update)
+            update(id, title, !isChecked);
+        }} />
         <div
           className={`relative cursor-text ${editActived ? "w-[100%]" : "w-auto"
             }`}
         >
           {editActived ? (
             <InputText
-              baseTitle={title}
-              title={value}
+              title={title}
               onChange={onChangeInputText}
               onBlur={onBlurInputText}
               onFocus={onFocusinputtext}
@@ -79,7 +86,7 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({
               className={isChecked ? "text-slate-400" : "text-slate-700"}
               onClick={onClickSpan}
             >
-              {value}
+              {title}
             </span>
           )}
           {isChecked && editActived !== isChecked && (

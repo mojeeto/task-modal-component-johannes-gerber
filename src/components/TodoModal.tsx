@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Breadcrumb from "./Breadcrumb";
 import CircleProgress from "./CircleProgress";
 import ModalOptions from "./ModalOptions";
@@ -6,12 +6,44 @@ import SwitchButtonText from "./SwitchButtonText";
 import { BiPlus } from "react-icons/bi";
 import CheckBoxText from "./CheckBoxText";
 
+export type DataType = {
+  id: number;
+  title: string;
+  category: "planning" | "design";
+  isChecked: boolean;
+};
+
 interface TodoModalProps {
   path?: Array<string>;
   title?: string;
+  data?: DataType[];
+  setter?: Dispatch<SetStateAction<DataType[]>> | null;
 }
 
-const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
+const TodoModal: React.FC<TodoModalProps> = ({
+  path,
+  title = "Untitled",
+  data = [],
+  setter = null,
+}) => {
+  const planning = data.filter((d) => d.category === "planning");
+  const design = data.filter((d) => d.category === "design");
+
+  const update = (id: number, newTitle: string, isChecked: boolean) => {
+    if (setter !== null) {
+      setter((prevState: DataType[]) => {
+        const newState = prevState.map((data) => {
+          if (data.id === id) {
+            data.title = newTitle;
+            data.isChecked = isChecked;
+          }
+          return data;
+        });
+        return newState;
+      });
+    }
+  };
+
   return (
     <div className="bg-white p-1 py-5 rounded-xl w-[600px]">
       {/* main modal */}
@@ -60,15 +92,15 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
             ></div>
           </div>
           <div className="flex flex-col pl-1">
-            <CheckBoxText
-              title="Trend and Competiter Analysis"
-              isChecked={true}
-            />
-            <CheckBoxText
-              title="Best Practices/State of the Art Research"
-              isChecked={true}
-            />
-            <CheckBoxText title="Create Figma File" isChecked={false} />
+            {planning.map((plan, index) => (
+              <CheckBoxText
+                id={plan.id}
+                title={plan.title}
+                isChecked={plan.isChecked}
+                key={index}
+                update={update}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -81,11 +113,15 @@ const TodoModal: React.FC<TodoModalProps> = ({ path, title = "Untitled" }) => {
           ></div>
         </div>
         <div className="flex flex-col">
-          <CheckBoxText title="Wireframes LF" isChecked={false} />
-          <CheckBoxText title="Vistual Styles" isChecked={false} />
-          <CheckBoxText title="Iconography" isChecked={false} />
-          <CheckBoxText title="HF Interactive Prototype" isChecked={false} />
-          <CheckBoxText title="Prepare Feedback Session" isChecked={false} />
+          {design.map((d, index) => (
+            <CheckBoxText
+              id={d.id}
+              title={d.title}
+              isChecked={d.isChecked}
+              key={index}
+              update={update}
+            />
+          ))}
         </div>
       </div>
     </div>
