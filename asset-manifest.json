@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.826ebfce.css",
-    "main.js": "/react-gh-pages/static/js/main.12ebfbe2.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.826ebfce.css.map": "/react-gh-pages/static/css/main.826ebfce.css.map",
-    "main.12ebfbe2.js.map": "/react-gh-pages/static/js/main.12ebfbe2.js.map"
+    "main.css": "/task-modal-component-johannes-gerber/static/css/main.826ebfce.css",
+    "main.js": "/task-modal-component-johannes-gerber/static/js/main.12ebfbe2.js",
+    "index.html": "/task-modal-component-johannes-gerber/index.html",
+    "main.826ebfce.css.map": "/task-modal-component-johannes-gerber/static/css/main.826ebfce.css.map",
+    "main.12ebfbe2.js.map": "/task-modal-component-johannes-gerber/static/js/main.12ebfbe2.js.map"
   },
   "entrypoints": [
     "static/css/main.826ebfce.css",
