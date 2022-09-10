@@ -1,4 +1,5 @@
 {
+  "homepage": "https://mojeeto.github.io/task-modal-component-johannes-gerber",
   "name": "task-modal-component-johannes-gerber",
   "version": "0.1.0",
   "private": true,
@@ -9,8 +10,10 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.56",
     "@types/react": "^18.0.18",
+    "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-dom": "^18.0.6",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
@@ -18,6 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,6 +48,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
   }

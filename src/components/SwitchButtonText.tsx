@@ -22,8 +22,8 @@ const SwitchButtonText: React.FC<SwitchButtonTextProps> = ({ buttonsTitle, class
   }
 
   return (
-    <div className={`relative inline-flex gap-2 ${className}`} style={style}>
-      <div className="bg-slate-100 text-lg p-1 rounded-lg relative">
+    <div className={`inline-flex gap-2 ${className}`} style={style}>
+      <div className="bg-slate-100 text-lg p-1 rounded-lg">
         {buttonsTitle.map((title, index) => (
           <button key={index} onClick={(e) => {
             onClickHandler(index, e);
