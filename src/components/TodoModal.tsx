@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import OptionsTodoModal from "./OptionsTodoModal";
 import HeaderTodoModal from "./HeaderTodoModal";
 import SectionTodoModal from "./SectionTodoModal";
@@ -19,6 +19,7 @@ export type ColumnType = {
 };
 
 export type TaskDataType = {
+  allTasks: number;
   tasks: {
     [key: string]: TasksType;
   },
@@ -43,16 +44,38 @@ const TodoModal: React.FC<TodoModalProps> = ({
   setter,
 }) => {
 
-  const update = (id: string, newTitle: string, isChecked: boolean, category: string) => {
-    setter((prevState: TaskDataType) => {
-      prevState.tasks[id] = {
-        id: id,
-        title: newTitle,
-        isChecked: isChecked,
-        category: category
-      }
-      return { ...prevState };
+  const allTasks = data.allTasks;
+  const [percent, setPercent] = useState<number>(25);
+  const [checkedCount, setCheckedCount] = useState<number>(2);
+
+  const calculatePercent = () => {
+    const groupsOfTasks = data.columnsOrder.map((columnsId) => {
+      return data.columns[columnsId].taskIds;
     });
+    let x = 0;
+    groupsOfTasks.map(tasksId => {
+      tasksId.map(taskId => {
+        if (data.tasks[taskId].isChecked) x += 1;
+      })
+    });
+    setCheckedCount(x);
+    setPercent(100 * (x / allTasks));
+  }
+
+  const update = (id: string, newTitle: string, isChecked: boolean, category: string) => {
+    const newState: TaskDataType = {
+      ...data,
+      tasks: {
+        ...data.tasks,
+        [id]: {
+          id: id,
+          title: newTitle,
+          isChecked: isChecked,
+          category: category,
+        }
+      }
+    }
+    setter(newState);
   };
 
   const onDragEnd: OnDragEndResponder = (result) => {
@@ -83,12 +106,17 @@ const TodoModal: React.FC<TodoModalProps> = ({
     }
   }
 
+
+  useEffect(() => {
+    calculatePercent();
+  }, [data]);
+
   return (
     <div className="bg-white p-1 py-5 rounded-xl w-[600px]">
       {/* main modal */}
       <div className="flex flex-col gap-4">
         <OptionsTodoModal path={path} />
-        <HeaderTodoModal title={title} />
+        <HeaderTodoModal title={title} percent={percent} all={allTasks} checkedCount={checkedCount} />
         <DragDropContext onDragEnd={onDragEnd}>
           {
             data.columnsOrder.map((columnId) => {

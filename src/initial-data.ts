@@ -1,6 +1,7 @@
 import { TaskDataType } from "components/TodoModal";
 
 export const initialData: TaskDataType = {
+  allTasks: 8,
   tasks: {
     "task-1": {
       id: "task-1",

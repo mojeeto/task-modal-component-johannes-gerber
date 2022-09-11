@@ -5,9 +5,12 @@ import SwitchButtonText from "./SwitchButtonText";
 
 interface HeaderTodoModalProps {
   title: string;
+  percent: number;
+  all: number;
+  checkedCount: number;
 }
 
-const HeaderTodoModal: React.FC<HeaderTodoModalProps> = ({ title }) => {
+const HeaderTodoModal: React.FC<HeaderTodoModalProps> = ({ title, percent, all, checkedCount }) => {
   return (
     <div className="flex flex-col gap-5 pl-9 ">
       <h2
@@ -26,9 +29,9 @@ const HeaderTodoModal: React.FC<HeaderTodoModalProps> = ({ title }) => {
         style={{ animationDelay: "0.9s" }}
       >
         <div className="flex items-center gap-2">
-          <CircleProgress />
+          <CircleProgress initialProgress={percent} />
           <div className="px-2 py-0.5 rounded-md bg-blue-600 text-white text-md">
-            2<span className="font-light">/</span>8
+            {checkedCount}<span className="font-light">/</span>{all}
           </div>
         </div>
         <div>
