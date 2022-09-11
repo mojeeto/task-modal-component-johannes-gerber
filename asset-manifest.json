@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/task-modal-component-johannes-gerber/static/css/main.826ebfce.css",
-    "main.js": "/task-modal-component-johannes-gerber/static/js/main.12ebfbe2.js",
+    "main.css": "/task-modal-component-johannes-gerber/static/css/main.c9ca5dae.css",
+    "main.js": "/task-modal-component-johannes-gerber/static/js/main.eb887cd2.js",
     "index.html": "/task-modal-component-johannes-gerber/index.html",
-    "main.826ebfce.css.map": "/task-modal-component-johannes-gerber/static/css/main.826ebfce.css.map",
-    "main.12ebfbe2.js.map": "/task-modal-component-johannes-gerber/static/js/main.12ebfbe2.js.map"
+    "main.c9ca5dae.css.map": "/task-modal-component-johannes-gerber/static/css/main.c9ca5dae.css.map",
+    "main.eb887cd2.js.map": "/task-modal-component-johannes-gerber/static/js/main.eb887cd2.js.map"
   },
   "entrypoints": [
-    "static/css/main.826ebfce.css",
-    "static/js/main.12ebfbe2.js"
+    "static/css/main.c9ca5dae.css",
+    "static/js/main.eb887cd2.js"
   ]
 }
