@@ -18,10 +18,19 @@ module.exports = {
           "0%": { width: "0%" },
           "100%": { width: "100%" },
         },
+        opacity: {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          }
+        }
       },
       animation: {
         fadeUp: "opacityTop 0.5s ease-in both",
         widthToRight: "widthIn 0.5s ease-in both",
+        opacity: "opacity 0.5s ease-in both",
       },
     },
   },

@@ -1,16 +1,16 @@
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import CheckBoxText from "./CheckBoxText";
-import { DataType } from "./TodoModal";
+import { ColumnType, TasksType } from "./TodoModal";
 
 interface SectionTodoModalProps {
-  sectionTitle: string;
-  tasks: DataType[];
-  taskUpdate: (id: string, newTitle: string, isChecked: boolean) => void;
+  column: ColumnType;
+  tasks: TasksType[];
+  taskUpdate: (id: string, newTitle: string, isChecked: boolean, category: string) => void;
 }
 
 const SectionTodoModal: React.FC<SectionTodoModalProps> = ({
-  sectionTitle,
+  column,
   tasks,
   taskUpdate,
 }) => {
@@ -18,17 +18,18 @@ const SectionTodoModal: React.FC<SectionTodoModalProps> = ({
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-3 pl-9 ">
         <span className="text-slate-400 animate-fadeUp capitalize">
-          {sectionTitle}
+          {column.title}
         </span>
         <div
           className="animate-widthToRight h-[1px] bg-slate-200"
           style={{ animationDelay: "0.6s" }}
         ></div>
       </div>
-      <Droppable droppableId={sectionTitle}>
+      <Droppable droppableId={column.id}>
         {(provided) => (
           <div
-            className="flex flex-col pl-1 relative"
+            className="flex flex-col pl-1 animate-opacity"
+            style={{ animationDelay: "1s" }}
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
@@ -38,7 +39,7 @@ const SectionTodoModal: React.FC<SectionTodoModalProps> = ({
                 index={index}
                 task={task}
                 update={taskUpdate}
-                category={sectionTitle}
+                category={column.id}
               />
             ))}
             {provided.placeholder}

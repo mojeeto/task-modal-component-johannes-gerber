@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import CheckBox from "./CheckBox";
 import { TbDotsVertical } from "react-icons/tb";
 import InputText from "./InputText";
-import { DataType } from "./TodoModal";
 import { Draggable } from "react-beautiful-dnd";
+import { TasksType } from "./TodoModal";
 
 interface CheckBoxTextProps {
   index: number;
-  task: DataType;
-  update: (id: string, title: string, isChcked: boolean) => void;
+  task: TasksType;
+  update: (id: string, title: string, isChcked: boolean, category: string) => void;
   category: string;
 }
 
 const CheckBoxText: React.FC<CheckBoxTextProps> = ({ index, task, update }) => {
   const [showDots, setShowDots] = useState<boolean>(false);
   const [editActived, setEditActived] = useState<boolean>(false);
-  const { id, title, isChecked } = task;
+  const { id, title, isChecked, category } = task;
 
   const onMouseOverCheckBoxText = () => {
     setShowDots(true);
@@ -28,7 +28,7 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({ index, task, update }) => {
   };
 
   const onChangeInputText = (newValidTitle: string) =>
-    update(id, newValidTitle, isChecked);
+    update(id, newValidTitle, isChecked, category);
 
   const onBlurInputText = () => {
     setEditActived(false);
@@ -44,7 +44,7 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({ index, task, update }) => {
   };
 
   return (
-    <Draggable draggableId={id} index={index}>
+    <Draggable draggableId={id} index={index} key={id}>
       {(provided) => (
         <div
           className="flex items-center"
@@ -69,10 +69,10 @@ const CheckBoxText: React.FC<CheckBoxTextProps> = ({ index, task, update }) => {
               isChecked={isChecked}
               className="z-10"
               onClick={() => {
-                if (update) update(id, title, !isChecked);
+                if (update) update(id, title, !isChecked, category);
               }}
             />
-            <div className={`relative {editActived ? "w-[100%]" : "w-auto"}`}>
+            <div className={`relative ${editActived ? "w-[100%]" : "w-auto"}`}>
               {editActived ? (
                 <InputText
                   title={title}
