@@ -13,7 +13,7 @@ const CircleProgress: React.FC<CircleProgressProps> = ({ initialProgress = 40 })
   const RADIUS_CIRCLES = 15;
   const STROKE_CIRCLES = 4;
 
-  const calculateProgressOfCircle = (circumference: number, percent: number): number => circumference - (percent / 100) * circumference;
+  const calculateProgressOfCircle = (circumference: number, percent: number): number => circumference - (-percent / 100) * circumference;
 
   useEffect(() => {
     if (progressRef.current) {

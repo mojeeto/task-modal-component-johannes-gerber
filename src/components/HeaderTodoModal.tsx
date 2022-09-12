@@ -35,7 +35,9 @@ const HeaderTodoModal: React.FC<HeaderTodoModalProps> = ({ title, percent, all, 
           </div>
         </div>
         <div>
-          <button className="px-5 py-1.5 border-[1px] rounded-md border-slate-300 text-slate-500 text-xl">
+          <button className="px-5 py-1.5 border-[1px] rounded-md border-slate-300 text-slate-500 text-xl" onClick={() => {
+            alert("add button not working yet");
+          }}>
             <BiPlus />
           </button>
         </div>
