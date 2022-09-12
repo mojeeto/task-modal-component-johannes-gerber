@@ -3,7 +3,7 @@ import CheckBox from "./CheckBox";
 import { TbDotsVertical } from "react-icons/tb";
 import InputText from "./InputText";
 import { Draggable } from "react-beautiful-dnd";
-import { TasksType } from "./TodoModal";
+import { TasksType } from "./Types";
 
 interface CheckBoxTextProps {
   index: number;

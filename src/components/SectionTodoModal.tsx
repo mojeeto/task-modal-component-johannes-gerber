@@ -1,7 +1,7 @@
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import CheckBoxText from "./CheckBoxText";
-import { ColumnType, TasksType } from "./TodoModal";
+import { ColumnType, TasksType } from "./Types";
 
 interface SectionTodoModalProps {
   column: ColumnType;

@@ -1,4 +1,4 @@
-import { TaskDataType } from "components/TodoModal";
+import { TaskDataType } from "components/Types";
 
 export const initialData: TaskDataType = {
   allTasks: 8,
