@@ -1,8 +1,13 @@
 import React from "react";
 import CommentInput from "./CommentInput";
 import CommentsSection from "./CommentsSection";
+import { CommentNeededType } from "./Types";
 
-const CommentSectionModal: React.FC = () => {
+interface CommentSectionModalProps {
+  comments: CommentNeededType[];
+}
+
+const CommentSectionModal: React.FC<CommentSectionModalProps> = ({ comments }) => {
   return (
     <div className="flex flex-col bg-slate-50 border-2 border-slate-300 rounded-lg py-2 px-3 w-[300px]">
       <div className="flex items-center justify-between text-slate-400 font-normal">
@@ -22,7 +27,7 @@ const CommentSectionModal: React.FC = () => {
           />
         </svg>
       </div>
-      <CommentsSection />
+      <CommentsSection comments={comments} />
       <CommentInput />
     </div>
   );

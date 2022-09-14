@@ -17,12 +17,25 @@ export type TaskDataType = {
   allTasks: number;
   tasks: {
     [key: string]: TasksType;
-  },
+  };
   columns: {
-    [key: string]: ColumnType,
-  },
-  columnsOrder: string[],
-}
+    [key: string]: ColumnType;
+  };
+  columnsOrder: string[];
+  comments: CommentNeededType[];
+};
+
+export type Reacts = {
+  emoji: string;
+  count: number;
+};
+export type CommentNeededType = {
+  username: string;
+  imageSrc: string;
+  comment: string;
+  time: string;
+  reacts: Reacts[];
+};
 
 export interface MainModalProps {
   path: string[];
@@ -30,4 +43,3 @@ export interface MainModalProps {
   data: TaskDataType;
   setter: Dispatch<SetStateAction<TaskDataType>>;
 }
-

@@ -8,7 +8,7 @@ const TodoModal: React.FC<MainModalProps> = (props) => {
     <div className="flex gap-4 bg-white rounded-xl p-1.5">
       {/* main modal */}
       <MainSectionModal {...props} />
-      <CommentSectionModal />
+      <CommentSectionModal comments={props.data.comments} />
     </div >
   );
 };

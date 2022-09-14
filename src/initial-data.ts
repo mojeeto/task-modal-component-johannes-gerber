@@ -1,4 +1,5 @@
 import { TaskDataType } from "components/Types";
+import MojeetoAvatar from "mojeeto.png";
 
 export const initialData: TaskDataType = {
   allTasks: 8,
@@ -53,16 +54,34 @@ export const initialData: TaskDataType = {
     },
   },
   columns: {
-    "planning": {
+    planning: {
       id: "planning",
       title: "Planning",
-      taskIds: ["task-1", "task-2", "task-3"]
+      taskIds: ["task-1", "task-2", "task-3"],
     },
-    "design": {
+    design: {
       id: "design",
       title: "Design",
-      taskIds: ["task-4", "task-5", "task-6", "task-7", "task-8"]
-    }
+      taskIds: ["task-4", "task-5", "task-6", "task-7", "task-8"],
+    },
   },
   columnsOrder: ["planning", "design"],
+  comments: [
+    {
+      username: "mojeeto",
+      imageSrc: MojeetoAvatar,
+      comment: "something",
+      time: "Yesterday • 4:29 pm",
+      reacts: [
+        {
+          emoji: "🔥",
+          count: 5,
+        },
+        {
+          emoji: "❤️",
+          count: 2,
+        },
+      ],
+    },
+  ],
 };

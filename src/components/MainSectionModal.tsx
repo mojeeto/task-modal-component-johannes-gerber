@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { DragDropContext, OnDragEndResponder } from "react-beautiful-dnd";
 import HeaderTodoModal from "./HeaderTodoModal";
 import OptionsTodoModal from "./OptionsTodoModal";
@@ -15,19 +15,19 @@ const MainSectionModal: React.FC<MainModalProps> = ({
   const [percent, setPercent] = useState<number>(25);
   const [checkedCount, setCheckedCount] = useState<number>(2);
 
-  const calculatePercent = () => {
+  const calculatePercent = useCallback(() => {
     const groupsOfTasks = data.columnsOrder.map((columnsId) => {
       return data.columns[columnsId].taskIds;
     });
     let x = 0;
-    groupsOfTasks.map((tasksId) => {
-      tasksId.map((taskId) => {
+    groupsOfTasks.forEach((tasksId) => {
+      tasksId.forEach((taskId) => {
         if (data.tasks[taskId].isChecked) x += 1;
       });
     });
     setCheckedCount(x);
     setPercent(100 * (x / allTasks));
-  };
+  }, [data, allTasks]);
 
   const update = (
     id: string,
@@ -81,7 +81,7 @@ const MainSectionModal: React.FC<MainModalProps> = ({
 
   useEffect(() => {
     calculatePercent();
-  }, [data]);
+  }, [data, calculatePercent]);
 
   return (
     <div className="flex flex-col gap-4 my-4">
