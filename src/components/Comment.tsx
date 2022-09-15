@@ -36,22 +36,22 @@ const Comment: React.FC<CommentNeededType> = ({ commentId, username, imageSrc, c
   }
 
   return (
-    <div className="flex gap-1.5 flex-col">
+    <div className="flex gap-1.5 flex-col" >
       <div className="flex items-center gap-3">
         <Avatar imageSrc={imageSrc} userNameForAlt={username} />
         <span className="text-slate-700 font-medium capitalize">{username}</span>
       </div>
-      <div className="text-slate-600 pr-2">
+      <div className="text-slate-600 break-words">
         {comment}
       </div>
       <div className="text-slate-400 text-sm">{time}</div>
-      <div className="flex gap-1 items-center">
+      <div className="flex gap-1 items-center relative">
         {reacts.map((react, index) => (
           <ReactionEmoji key={index} counter={react.count} onUpdate={() => {
             updateComment(react.emoji, react.count + 1);
           }}>{react.emoji}</ReactionEmoji>
         ))}
-        <div className="ml-1 relative">
+        <div className="ml-1">
           <MdOutlineTagFaces
             className="text-slate-400 cursor-pointer"
             onClick={() => {
@@ -59,23 +59,12 @@ const Comment: React.FC<CommentNeededType> = ({ commentId, username, imageSrc, c
             }}
           />
           {useEmoji && (
-            <div className="absolute">
+            <div className="absolute left-0">
               <Picker
+                disableSearchBar={true}
                 onEmojiClick={(_, emojiObject) => {
                   const newEmoji = emojiObject.emoji;
                   updateComment(newEmoji, 0);
-                  // Todo:: update emoji count
-                  //   const newComments = data!.comments.map(comment => {
-                  //     if (comment.commentId === commentId) {
-                  //       comment.reacts.push({ emoji: newEmoji, count: 0 });
-                  //     }
-                  //     return comment;
-                  //   });
-                  //   const newState: TaskDataType = {
-                  //     ...data!,
-                  //     comments: newComments,
-                  //   }
-                  //   updateData!(newState);
                   setUseEmoji(false);
                 }}
               />
@@ -83,7 +72,7 @@ const Comment: React.FC<CommentNeededType> = ({ commentId, username, imageSrc, c
           )}
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

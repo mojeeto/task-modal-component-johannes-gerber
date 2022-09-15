@@ -7,7 +7,7 @@ import TodoModal from "./components/TodoModal";
 function App() {
   const [data, setData] = useState<TaskDataType>(initialData);
   return (
-    <main className="flex items-center w-[100vw] h-[100vh] justify-center bg-[rgb(67,82,225)]">
+    <main className="flex overflow-hidden items-center w-[100vw] h-[100vh] justify-center bg-[rgb(67,82,225)]">
       <TodoModalContextProvider data={data} update={setData}>
         <TodoModal />
       </TodoModalContextProvider>

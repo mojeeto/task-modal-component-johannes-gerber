@@ -6,7 +6,7 @@ import CommentsSection from "./CommentsSection";
 const CommentSectionModal: React.FC = () => {
   return (
     <div className="flex flex-col bg-slate-50 border-2 border-slate-300 rounded-lg py-2 px-3 w-[300px]">
-      <div className="flex items-center justify-between text-slate-400 font-normal">
+      <div className="flex items-center justify-between text-slate-400 font-normal animate-opacity" style={{ animationDelay: "1s" }}>
         <span>Comments</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
