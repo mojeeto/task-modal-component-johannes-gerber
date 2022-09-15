@@ -2,6 +2,8 @@ import { TaskDataType } from "components/Types";
 import MojeetoAvatar from "mojeeto.png";
 
 export const initialData: TaskDataType = {
+  title: "Sidebar Design Explorations",
+  path: ["Project One", "Discovery", "In Progress", "#182"],
   allTasks: 8,
   tasks: {
     "task-1": {
@@ -68,9 +70,10 @@ export const initialData: TaskDataType = {
   columnsOrder: ["planning", "design"],
   comments: [
     {
+      commentId: 0,
       username: "mojeeto",
       imageSrc: MojeetoAvatar,
-      comment: "something",
+      comment: "example comment",
       time: "Yesterday • 4:29 pm",
       reacts: [
         {

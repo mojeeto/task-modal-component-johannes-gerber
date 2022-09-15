@@ -1,14 +1,12 @@
 import React from 'react';
 import Comment from './Comment';
-import { CommentNeededType } from './Types';
+import { TodoModalContext } from './TodoModalContext';
 
-interface CommentsSectionProps {
-  comments: CommentNeededType[];
-}
 
-const CommentsSection: React.FC<CommentsSectionProps> = ({ comments }) => {
+const CommentsSection: React.FC = () => {
+  const [data] = React.useContext(TodoModalContext);
   return <div className="flex-1 py-5">
-    {comments.map((comment, index) => {
+    {data!.comments.map((comment, index) => {
       return <Comment key={index} {...comment} />
     })}
   </div>

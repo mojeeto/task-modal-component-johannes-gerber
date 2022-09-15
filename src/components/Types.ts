@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import React from "react";
 
 export type TasksType = {
   id: string;
@@ -14,6 +14,8 @@ export type ColumnType = {
 };
 
 export type TaskDataType = {
+  path: string[];
+  title: string;
   allTasks: number;
   tasks: {
     [key: string]: TasksType;
@@ -30,16 +32,10 @@ export type Reacts = {
   count: number;
 };
 export type CommentNeededType = {
+  commentId: number;
   username: string;
   imageSrc: string;
   comment: string;
   time: string;
   reacts: Reacts[];
 };
-
-export interface MainModalProps {
-  path: string[];
-  title: string;
-  data: TaskDataType;
-  setter: Dispatch<SetStateAction<TaskDataType>>;
-}

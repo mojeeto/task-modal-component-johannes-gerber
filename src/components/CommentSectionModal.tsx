@@ -1,13 +1,9 @@
 import React from "react";
 import CommentInput from "./CommentInput";
 import CommentsSection from "./CommentsSection";
-import { CommentNeededType } from "./Types";
 
-interface CommentSectionModalProps {
-  comments: CommentNeededType[];
-}
 
-const CommentSectionModal: React.FC<CommentSectionModalProps> = ({ comments }) => {
+const CommentSectionModal: React.FC = () => {
   return (
     <div className="flex flex-col bg-slate-50 border-2 border-slate-300 rounded-lg py-2 px-3 w-[300px]">
       <div className="flex items-center justify-between text-slate-400 font-normal">
@@ -27,7 +23,7 @@ const CommentSectionModal: React.FC<CommentSectionModalProps> = ({ comments }) =
           />
         </svg>
       </div>
-      <CommentsSection comments={comments} />
+      <CommentsSection />
       <CommentInput />
     </div>
   );
