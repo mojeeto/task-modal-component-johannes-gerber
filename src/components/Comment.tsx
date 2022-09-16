@@ -64,6 +64,33 @@ const Comment: React.FC<CommentNeededType & InputPickerStateProps> = ({
     updateData!(newState);
   };
 
+  const parseComment = (comment: string): React.ReactNode => {
+    // i know this part in code have problem if we have a lot of links in one comment
+    // but this component is demo so i just handle the target link to show and parse
+    let newComment: string | React.ReactNode = comment;
+    if (commentId === 0) {
+      const target = comment.split(/[\[\]]/);
+      const targetLink = target[1].split(",");
+      const link = targetLink[1];
+      const text = targetLink[0];
+      newComment = (
+        <>
+          {target[0]}
+          <a
+            style={{ color: "rgb(139 92 246)" }}
+            target="_blank"
+            rel="noreferrer noopener"
+            href={link}
+          >
+            {text}
+          </a>
+          {target[2]}
+        </>
+      );
+    }
+    return newComment;
+  };
+
   return (
     <div className="flex gap-1.5 flex-col">
       <div className="flex items-center gap-3">
@@ -72,7 +99,7 @@ const Comment: React.FC<CommentNeededType & InputPickerStateProps> = ({
           {username}
         </span>
       </div>
-      <div className="text-slate-600 break-words">{comment}</div>
+      <div className="text-slate-600 break-words">{parseComment(comment)}</div>
       <div className="text-slate-400 text-sm">{time}</div>
       <div className="flex gap-1 items-center relative">
         {reacts.map((react, index) => (

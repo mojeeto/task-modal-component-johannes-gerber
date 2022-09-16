@@ -1,5 +1,6 @@
 import { TaskDataType } from "components/Types";
 import MojeetoAvatar from "mojeeto.png";
+import JohannesGerberAvatar from "johannese_gerber.jpg.webp";
 
 export const initialData: TaskDataType = {
   title: "Sidebar Design Explorations",
@@ -73,7 +74,7 @@ export const initialData: TaskDataType = {
       commentId: 0,
       username: "mojeeto",
       imageSrc: MojeetoAvatar,
-      comment: "example comment",
+      comment: "Just found [this here, https://dribbble.com/shots/17165930/attachments/12265742?mode=media] on dribbble as a project. Thought it could be good exercise for Web Developing.",
       time: "Yesterday • 4:29 pm",
       reacts: [
         {
@@ -85,6 +86,18 @@ export const initialData: TaskDataType = {
           count: 2,
         },
       ],
+      pickerShow: false,
+    }, {
+      commentId: 1,
+      username: "johannesgerber",
+      imageSrc: JohannesGerberAvatar,
+      comment: "I don't know what can i say about this.",
+      time: "Today • 26 min",
+      reacts: [
+        {
+          emoji: "🔥",
+          count: 0,
+        }],
       pickerShow: false,
     },
   ],

@@ -34,7 +34,7 @@ const CommentInput: React.FC<InputPickerStateProps> = ({ pickerInputState, setPi
         commentId: data!.comments.length + 10,
         username: "guest",
         comment: inputValue,
-        time: "Today",
+        time: "Today • 1 sec",
         reacts: [],
         imageSrc: "no-image",
         pickerShow: false,
