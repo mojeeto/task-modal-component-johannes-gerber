@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import Comment from "./Comment";
 import { TodoModalContext } from "./TodoModalContext";
+import { InputPickerStateProps } from "./Types";
 
-const CommentsSection: React.FC = () => {
-  const sectionRef = React.useRef<HTMLDivElement>(null);
-  const [data] = React.useContext(TodoModalContext);
-  React.useEffect(() => {
+const CommentsSection: React.FC<InputPickerStateProps> = (props) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [data] = useContext(TodoModalContext);
+  useEffect(() => {
     const target = sectionRef.current;
     if (target) {
       const scrollHeight = target.scrollHeight;
@@ -13,7 +14,7 @@ const CommentsSection: React.FC = () => {
         top: scrollHeight
       });
     }
-  }, [data]);
+  }, [data!.comments.length]);
   return (
     <div
       className="flex flex-col gap-8 flex-1 py-5 max-h-[577px] overflow-y-scroll overflow-x-hidden animate-opacity"
@@ -21,7 +22,7 @@ const CommentsSection: React.FC = () => {
       ref={sectionRef}
     >
       {data!.comments.map((comment, index) => {
-        return <Comment key={index} {...comment} />;
+        return <Comment key={index} {...comment} {...props} />;
       })}
     </div>
   );

@@ -4,6 +4,7 @@ import CommentsSection from "./CommentsSection";
 
 
 const CommentSectionModal: React.FC = () => {
+  const [inputEmojiPicker, setInputEmojiPicker] = React.useState<boolean>(false);
   return (
     <div className="flex flex-col bg-slate-50 border-2 border-slate-300 rounded-lg py-2 px-3 w-[300px]">
       <div className="flex items-center justify-between text-slate-400 font-normal animate-opacity" style={{ animationDelay: "1s" }}>
@@ -23,8 +24,8 @@ const CommentSectionModal: React.FC = () => {
           />
         </svg>
       </div>
-      <CommentsSection />
-      <CommentInput />
+      <CommentsSection pickerInputState={inputEmojiPicker} setPickerInputState={setInputEmojiPicker} />
+      <CommentInput pickerInputState={inputEmojiPicker} setPickerInputState={setInputEmojiPicker} />
     </div>
   );
 };

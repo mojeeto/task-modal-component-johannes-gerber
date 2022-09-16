@@ -1,5 +1,3 @@
-import React from "react";
-
 export type TasksType = {
   id: string;
   title: string;
@@ -38,4 +36,10 @@ export type CommentNeededType = {
   comment: string;
   time: string;
   reacts: Reacts[];
+  pickerShow: boolean;
 };
+
+export interface InputPickerStateProps {
+  pickerInputState: boolean;
+  setPickerInputState: React.Dispatch<React.SetStateAction<boolean>>;
+}

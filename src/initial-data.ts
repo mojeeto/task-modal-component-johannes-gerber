@@ -85,6 +85,7 @@ export const initialData: TaskDataType = {
           count: 2,
         },
       ],
+      pickerShow: false,
     },
   ],
 };
