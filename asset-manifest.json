@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/task-modal-component-johannes-gerber/static/css/main.9afcbbda.css",
-    "main.js": "/task-modal-component-johannes-gerber/static/js/main.3b02b14c.js",
+    "main.css": "/task-modal-component-johannes-gerber/static/css/main.9084f394.css",
+    "main.js": "/task-modal-component-johannes-gerber/static/js/main.4a0a5c6e.js",
     "static/media/mojeeto.png": "/task-modal-component-johannes-gerber/static/media/mojeeto.623fe81e5bf169c39307.png",
     "static/media/johannese_gerber.jpg.webp": "/task-modal-component-johannes-gerber/static/media/johannese_gerber.jpg.dc4d1a34574222b458be.webp",
     "index.html": "/task-modal-component-johannes-gerber/index.html",
-    "main.9afcbbda.css.map": "/task-modal-component-johannes-gerber/static/css/main.9afcbbda.css.map",
-    "main.3b02b14c.js.map": "/task-modal-component-johannes-gerber/static/js/main.3b02b14c.js.map"
+    "main.9084f394.css.map": "/task-modal-component-johannes-gerber/static/css/main.9084f394.css.map",
+    "main.4a0a5c6e.js.map": "/task-modal-component-johannes-gerber/static/js/main.4a0a5c6e.js.map"
   },
   "entrypoints": [
-    "static/css/main.9afcbbda.css",
-    "static/js/main.3b02b14c.js"
+    "static/css/main.9084f394.css",
+    "static/js/main.4a0a5c6e.js"
   ]
 }
